@@ -1,0 +1,26 @@
+
+.menu {
+  display: flex;
+  gap: 25px;
+  text-align: center;
+
+  margin: 0 auto;  
+  justify-content: center;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(20,20,20,0.95);
+  align-items: center; 
+  text-align: center;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  width: 100%; 
+  text-align: center;
+}

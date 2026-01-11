@@ -1,0 +1,27 @@
+Table count: 28 records in device_comparison
+Query: 
+    SELECT 
+        dc.id,
+        dc.admission_no,
+        dc.hash_256 as scanned_hash,
+        d.hash_256 as stored_hash,
+        dc.match_status,
+        dc.timestamp,
+        dc.scanned_data,
+        s.full_name,
+        ds.user_agent,
+        ds.platform,
+        ds.screen_resolution,
+        ds.language,
+        ds.timezone,
+        ds.ip_address
+    FROM device_comparison dc
+    LEFT JOIN devices d ON dc.admission_no = d.admission_no AND d.hash_256 = dc.hash_256
+    LEFT JOIN students s ON dc.admission_no = s.admission_no
+    LEFT JOIN device_scans ds ON dc.admission_no = ds.admission_no AND DATE(ds.timestamp) = DATE(dc.timestamp)
+    WHERE DATE(dc.timestamp) = ?
+    ORDER BY dc.timestamp DESC
+
+Where clause: WHERE DATE(dc.timestamp) = ?
+Params: 2025-11-03
+Found: 0 comparison records
